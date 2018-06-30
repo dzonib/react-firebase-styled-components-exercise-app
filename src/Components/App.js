@@ -1,37 +1,44 @@
 import React, { Component, Fragment } from 'react';
 import db from '../firebase/init';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
-import {Header, Logo, Navbar, StyledLink, resetStyles} from '../StyledComponents/Navbar'
-
+import {
+  resetStyles,
+} from '../StyledComponents/Header';
+import Header from './Layout/Header';
+// import Footer from './Layout/Footer';
 
 class App extends Component {
   state = {
-    exercises: []
-  }
+    exercises: [],
+    muscles: []
+  };
 
-componentDidMount = () => {
-  db.collection('exercises').get().then((snapshot) => {
-    let data = []
-    snapshot.forEach( item => {
-      data.push(item.data(), item.id)
-    })
-    this.setState(() => ({exercises: data}))
-  })
-}
+  componentDidMount = () => {
+    db.collection('exercises')
+      .get()
+      .then(snapshot => {
+        let exerciseData = [];
+        snapshot.forEach(item => {
+          const id = item.id;
+          exerciseData.push({ id, ...item.data() });
+        });
+        this.setState(() => ({ exercises: exerciseData }));
+      })
+      .then(() => {
+        let musclesGroups = this.state.exercises.map(
+          exercise => exercise.muscles
+        );
+        this.setState(() => ({muscles: musclesGroups}))
+      });
+  };
 
   render() {
-    console.log(this.state.exercises)
-    resetStyles()
+    resetStyles();
     return (
       <Router>
         <Fragment>
-          <Header>
-            <Logo to="#">Exercises App</Logo>
-          <Navbar>
-            <StyledLink to="">Home</StyledLink>
-            <StyledLink to="">Add Exercises</StyledLink>
-          </Navbar>
-          </Header>
+          <Header />
+          {/* <Footer muscles={this.state.muscles} /> */}
         </Fragment>
       </Router>
     );

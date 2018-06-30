@@ -1,30 +1,27 @@
-import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-
-const styles = {
-  root: {
-    flexGrow: 1,
-  },
-};
-
-const Header = props => {
-  const { classes } = props;
-  return (
-    <div className={classes.root}>
-      <AppBar position="static" color="primary">
-        <Toolbar>
-          <Typography variant="title" color="inherit">
-            Title
-          </Typography>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
-}
+import React, { Fragment } from 'react';
+import {
+  Header as Head,
+  Logo,
+  Navbar,
+  StyledLink,
+  LinkContainer
+} from '../../StyledComponents/Header';
 
 
+const Header = () => (
+  <Fragment>
+    <Head>
+      <Logo to="#">Exercises App</Logo>
+      <Navbar>
+        <LinkContainer>
+          <StyledLink to="">Home</StyledLink>
+        </LinkContainer>
+        <LinkContainer>
+          <StyledLink to="">Add Exercises</StyledLink>
+        </LinkContainer>
+      </Navbar>
+    </Head>
+  </Fragment>
+);
 
-export default withStyles(styles)(Header);
+export default Header
