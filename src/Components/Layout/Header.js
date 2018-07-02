@@ -14,10 +14,10 @@ const Header = () => (
       <Logo to="#">Exercises App</Logo>
       <Navbar>
         <LinkContainer>
-          <StyledLink to="">Home</StyledLink>
+          <StyledLink to="/">Home</StyledLink>
         </LinkContainer>
         <LinkContainer>
-          <StyledLink to="">Add Exercises</StyledLink>
+          <StyledLink to="/add-exercise">Add Exercises</StyledLink>
         </LinkContainer>
       </Navbar>
     </Head>

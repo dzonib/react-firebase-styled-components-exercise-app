@@ -1,19 +1,25 @@
 import styled from 'styled-components';
 import reset from 'styled-reset';
-import { injectGlobal } from 'styled-components';
-import { Link } from 'react-router-dom';
+import {
+  injectGlobal
+} from 'styled-components';
+import {
+  Link
+} from 'react-router-dom';
 
-export const resetStyles = () => injectGlobal`
+export const resetStyles = () => injectGlobal `
+
   ${reset}
+
 `;
 
-export const Header = styled.header`
+export const Header = styled.header `
   font-family: 'Roboto', sans-serif;
   display: flex;
   background: #009688;
 `;
 
-export const Navbar = styled.nav`
+export const Navbar = styled.nav `
   margin-right: 10%;
   display: flex;
   align-items: center;
@@ -41,7 +47,7 @@ export const StyledLink = styled(Link)`
   }
 `;
 
-export const LinkContainer = styled.div`
+export const LinkContainer = styled.div `
   display: inline-block;
   font-size: 1.5em;
   padding: 0.3em 1em;

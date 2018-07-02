@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import db from '../firebase/init';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import {
   resetStyles,
 } from '../StyledComponents/Header';
 import Header from './Layout/Header';
+import AddExercise from './Layout/AddExercise'
 // import Footer from './Layout/Footer';
 
 class App extends Component {
@@ -39,6 +40,9 @@ class App extends Component {
         <Fragment>
           <Header />
           {/* <Footer muscles={this.state.muscles} /> */}
+
+        <Route path="/add-exercise" render={() => <AddExercise/>}/>
+
         </Fragment>
       </Router>
     );
