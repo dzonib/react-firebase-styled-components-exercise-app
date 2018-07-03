@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from 'react';
-import { Form, Input, InputAndLabelContainer, Label, Select, Button, TextArea } from '../../StyledComponents/Form';
+import { Form, Input, InputAndLabelContainer, Label, Select, Button, TextArea, Title } from '../../StyledComponents/Form';
 
 class AddExercise extends Component {
 
@@ -9,30 +9,51 @@ class AddExercise extends Component {
     description: ''
   }
 
+
+  exerciseHandler = (e) => {
+    const exercise = e.target.value;
+    this.setState(() => ({exercise}))
+  }
+
+  handleTextarea = (e) => {
+    const description = e.target.value;
+    this.setState(() => ({description}))
+  }
+
+  handleSelect = e => {
+    const muscleGroup = e.target.value;
+    this.setState(() => ({muscleGroup}))
+  }
+
   render() {
+    console.log(this.state)
     return (
       <Fragment>
           <Form>
+          <Title>Add Exercise</Title>
           <InputAndLabelContainer none={"none"}>
             <Label>Muscle Group</Label>
-              <Select>
-                <option>Uno</option>
-                <option>Due</option>
-                <option>Tree</option>
+              <Select onChange={this.handleSelect}>
+                <option disabled>-- Select muscles group --</option>
+                <option value="back">Back</option>
+                <option value="legs">Legs</option>
+                <option value="chest">Chest</option>
+                <option value="shounders">Shoulders</option>
+                <option value="arms">Arms</option>
               </Select>
             </InputAndLabelContainer>
 
             <InputAndLabelContainer>
             <Label>Exercise name</Label>
-            <Input/>
+            <Input onChange={this.exerciseHandler}/>
             </InputAndLabelContainer>
 
             <InputAndLabelContainer>
             <Label>Exercise Description</Label>
-            <TextArea/>
-          </InputAndLabelContainer>
+            <TextArea onChange={this.handleTextarea}/>
+            </InputAndLabelContainer>
 
-          <Button type="submit">Submit</Button>
+          <Button type="submit">Add Exercise</Button>
 
           </Form>
       </Fragment>

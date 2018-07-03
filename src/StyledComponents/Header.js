@@ -9,7 +9,8 @@ import {
 
 export const resetStyles = () => injectGlobal `
 
-  ${reset}
+  ${reset};
+  font-family: 'Roboto', sans-serif;
 
 `;
 
